@@ -19,8 +19,13 @@ namespace Exercicio01.MVC.WEB.Controllers
         public ActionResult AddToList(Cliente cli)
         {
             _listaClientes.Add(cli);
+            ViewBag.lista = _listaClientes;
             TempData["msg"] = "Cliente Adicionado!";
             return Redirect("Index");
+        }
+        public ActionResult Listar()
+        {
+            return RedirectToAction("Index","Cliente", _listaClientes);
         }
     }
 }

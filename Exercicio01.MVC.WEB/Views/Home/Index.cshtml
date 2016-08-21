@@ -1,7 +1,51 @@
-﻿
+﻿@model Exercicio01.MVC.WEB.Models.Cliente
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Cadastro de Clientes</h2>
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-success alert-dismissable">
+        @TempData["msg"]
+    </div>
+}
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.LabelFor(c => c.ClienteID, "ID")
+        @Html.TextBoxFor(c => c.ClienteID, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Nome, "Nome")
+        @Html.TextBoxFor(c => c.Nome, new { @class = "form-control" })
+    </div>
 
+    <div class="form-group">
+        @Html.LabelFor(c => c.Idade, "Idade")
+        @Html.TextBoxFor(c => c.Idade, new { @class = "form-control", @type = "number", min = "18" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Telefone, "Telefone")
+        @Html.TextBoxFor(c => c.Telefone, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.DataNascimento, "Data de nascimento")
+        @Html.TextBoxFor(c => c.DataNascimento, new { @class = "form-control", @type = "date" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Endereco, "Endereço")
+        @Html.TextBoxFor(c => c.Endereco, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.ActionLink("Adicionar Cliente", "AddToList", new { @class = "btn btn-success" })
+    </div>
+}
+
+<div class="form-group">
+    @Html.ActionLink("Listar Clientes", "Index", "Cliente", new { @class = "btn btn-info" })
+</div>
